@@ -1,195 +1,114 @@
-# GitHub Project Template
+# 🚀 README Template
 
-A comprehensive GitHub repository template that provides the essential files
-and structure needed for any project, regardless of programming language. This
-template includes standard community health files, GitHub issue templates, and
-pull request templates to help you get started quickly with best practices for
-open source projects.
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Language](https://img.shields.io/badge/Language-Markdown-blue.svg)](https://www.markdownguide.org/)
+[![Tool](https://img.shields.io/badge/Tool-Mise-green.svg)](https://mise.jdx.dev/)
 
-## 🚀 Features
+A standardized template and set of instructions for generating high-quality project READMEs using AI assistants or
+manual curation.
 
-- **Language Agnostic**: Works for any programming language or project type
-- **Community Health Files**: Includes standard files for project governance
-- **GitHub Integration**: Pre-configured issue and pull request templates, and local CI testing with act
-- **Development Tools**: Pre-configured development workflow tools including lefthook, mise, cocogitto, and act
-- **Customizable**: Easy to adapt to your specific project needs
+## ✨ Features
 
-## 📋 Included Files
+- ⚡ **Standardized Structure**: Follows a consistent and professional layout.
+- 🤖 **AI-Ready**: Includes `AI_INSTRUCTIONS.md` to help AI assistants generate content.
+- 🔧 **Modern Tooling**: Integrated with **Mise**, **Lefthook**, and **Cocogitto**.
+- 📁 **Organized**: Clean project structure for easy maintenance.
 
-### Root Directory
+## 🚀 Quick Start
 
-- **README.md**: This file - provides information about the project and how to use it
-- **LICENSE**: Apache License 2.0 - defines the terms under which the project can be used
-- **CODE_OF_CONDUCT.md**: Defines standards for how to engage in the project community
-- **SECURITY.md**: Outlines security procedures and how to report vulnerabilities
-- **.lefthook.yml**: Configuration for lefthook Git hooks manager
-- **mise.toml / .tool-versions**: Configuration for the mise tool version manager (including lefthook, cocogitto, and act)
+### Prerequisites
 
-### Development Tools Configuration
+- [Mise](https://mise.jdx.dev/) - Tool version manager
+- [Git](https://git-scm.com/) - Version control
 
-- **mise.toml / .tool-versions**: Pin and manage tool versions (mise, lefthook, cocogitto, act) with mise
+### Installation
 
-### GitHub Integration (.github directory)
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/username/readme-template.git
+   cd readme-template
+   ```
+2. **Setup environment**:
+   ```bash
+   # Installs mise and all defined tools
+   ./scripts/install.sh
+   ```
 
-- **Issue Templates**:
-    - `bug_report.yml`: Structured template for reporting bugs
-    - `feature_request.yml`: Structured template for suggesting new features
-    - `documentation_improvement.yml`: Structured template for documentation improvements
-    - `ISSUE_TEMPLATE.md`: General issue template for other types of issues
-- **Pull Request Template**:
-    - `PULL_REQUEST_TEMPLATE.md`: Template for submitting changes to the project
+## 🏃‍♂️ Usage
 
-## 🔧 Development Tools
-
-This template includes several pre-configured development tools to improve code quality and streamline workflows:
-
-### Mise
-- **Purpose**: Tool version manager that ensures consistent tool versions across different environments
-- **Configuration**: `mise.toml` and/or `.tool-versions` specify versions for tools like cocogitto, lefthook, and act
-- **Benefits**: Eliminates "works on my machine" issues by pinning exact tool versions for things like cocogitto, lefthook, and act
-
-### Lefthook
-- **Purpose**: Git hooks manager that runs commands automatically during Git operations
-- **Configuration**: `.lefthook.yml` sets up hooks to run cocogitto verification on commit messages and checks before pushing
-- **Benefits**: Enforces code quality standards and conventional commit formats automatically
-
-### Cocogitto
-- **Purpose**: Conventional commits tool that enforces commit message standards and generates changelogs
-- **Configuration**: Managed via mise and integrated with lefthook hooks
-- **Benefits**: Ensures consistent commit history and enables automated semantic versioning and changelog generation
-
-### Act
-- **Purpose**: Run GitHub Actions locally to test workflows before pushing
-- **Configuration**: Managed via mise; uses `.github/act/pull_request.json` for event simulation and integrated as a mise task (`act-pr`)
-- **Benefits**: Faster feedback loops for CI/CD changes and reduced GitHub Actions usage
-
-These tools work together to create a robust development environment with automated quality checks, consistent tooling, and standardized commit practices.
-
-## ⚡ Installation
-
-This template includes development tools that can be installed to enhance your development workflow using mise.
-
-### Install mise
-
-Choose one of the following methods (see https://mise.jdx.dev/ for more options):
+To use this template for your own project, copy `TEMPLATE.md` to your project and follow the instructions in
+`AI_INSTRUCTIONS.md` with your preferred AI assistant.
 
 ```bash
-curl https://mise.run | sh
+# Copy the template to your project
+cp TEMPLATE.md path/to/your/project/README.md
 ```
 
-After installation, ensure `mise` is on your PATH.
+## 🛠️ Development
 
-### Install configured tools
+### Available Scripts
 
-From the project root, run:
+| Script   | Description                     |
+|----------|---------------------------------|
+| `setup`  | Install Git hooks via Lefthook  |
+| `lint`   | Run linting checks              |
+| `format` | Run formatting                  |
+| `act`    | Run local CI checks using `act` |
+
+### 🧹 Code Quality
+
+We use `mise` tasks for linting and formatting:
 
 ```bash
-mise install
+# Run linting
+mise run lint
+
+# Run formatting
+mise run format
 ```
 
-### Set up Git hooks
+### 🪝 Git Hooks & Conventional Commits
 
-```bash
-lefthook install
+This project uses **Lefthook** for Git hooks and follows **Conventional Commits**.
+
+- **Pre-commit**: Runs linting tasks.
+- **Commit-msg**: Validates commit messages using `cog`.
+- **Pre-push**: Checks commit history consistency.
+
+## 📁 Project Structure
+
 ```
-
-### Local CI Testing (Act)
-
-If you have Docker installed, you can run GitHub Actions locally using `act`. This template includes a pre-configured mise task for testing pull request workflows:
-
-```bash
-mise run act-pr
+.
+├── .github/             # GitHub templates and workflows
+├── scripts/             # Helper scripts
+│   └── install.sh       # Project setup script
+├── AI_INSTRUCTIONS.md   # AI assistant guide
+├── CODE_OF_CONDUCT.md   # Community standards
+├── LICENSE              # Apache 2.0
+├── PROMPT.md            # LLM prompt context
+├── README.md            # You are here! 📍
+├── SECURITY.md          # Security policy
+├── TEMPLATE.md          # The README template itself
+└── mise.toml            # Task runner configuration
 ```
-
-This command uses `.github/act/pull_request.json` to simulate a pull request event.
-
-## 🛠️ How to Use This Template
-
-1. **Create a New Repository**:
-    - Click the "Use this template" button at the top of the repository
-    - Or clone/download this repository and initialize a new Git repository
-
-2. **Customize the Files**:
-    - Update this README.md with information about your project
-    - Modify the LICENSE file if you want to use a different license
-    - Update the CODE_OF_CONDUCT.md and SECURITY.md with your contact information
-    - Adjust the issue and pull request templates to match your project's needs
-
-3. **Add Your Project Files**:
-    - Add your source code, documentation, and other project-specific files
-    - Create additional directories as needed for your project structure
-
-4. **Publish Your Repository**:
-    - Push your changes to GitHub
-    - Enable GitHub Pages if you want to create a project website
-
-## ✏️ Customization Guide
-
-### README.md
-
-- Replace this content with information about your project
-- Include sections such as:
-    - Project description and purpose
-    - Installation instructions
-    - Usage examples
-    - API documentation
-    - Contributing guidelines
-    - License information
-
-### LICENSE
-
-- The template includes the Apache License 2.0
-- To use a different license, replace this file with your preferred license
-- Update the copyright notice with your name/organization and year
-
-### CODE_OF_CONDUCT.md
-
-- Update the contact information in the "Enforcement" section
-- Customize any specific rules or expectations for your community
-
-### SECURITY.md
-
-- Update the "Reporting a Vulnerability" section with your contact information
-- Modify the "Supported Versions" table to match your project's version policy
-- Update the "Security Contacts" section with your contact details
-
-### Issue Templates
-
-- Modify the fields, labels, and descriptions to match your project's needs
-- Add or remove templates based on the types of contributions you expect
-
-### Pull Request Template
-
-- Templates follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format
-- Adjust the checklist items to match your project's requirements
-- Modify the types of changes to reflect your project's structure
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please follow these steps:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format:
-   - For new features: `git commit -m 'feat: add some amazing feature'`
-   - For bug fixes: `git commit -m 'fix: resolve issue with login process'`
-   - For documentation: `git commit -m 'docs: update installation instructions'`
-   - For other changes: See the Conventional Commits specification for more types
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request using the provided templates
-
-Please read the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct and the process for
-submitting pull requests.
-
-## 📄 License
-
-This template is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+1. Fork the project
+2. Create your feature branch
+3. Commit your changes (Conventional Commits)
+4. Push to the branch
+5. Open a Pull Request
 
 ## 🔒 Security
 
-For information about reporting security vulnerabilities, please read our [Security Policy](SECURITY.md).
+Please see [SECURITY.md](SECURITY.md) for our security policy.
+
+## 📄 License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-**Note**: This template is designed to be a starting point. Feel free to modify it to better suit your project's
-specific needs.
+**Happy coding! 🎉** If you find this project useful, please give it a ⭐️

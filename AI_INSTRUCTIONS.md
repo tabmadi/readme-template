@@ -27,4 +27,7 @@ Generate or update the `README.md` for this project by inspecting the codebase a
 
 ## 🚀 Execution Command
 If you are using a tool like Junie or Cursor, you can simply say:
-> "Read `TEMPLATE.md` and the current codebase to generate a complete `README.md` following our standard style."
+> "Read https://raw.githubusercontent.com/TheRealZurvan/readme-template/refs/heads/master/TEMPLATE.md and the current codebase to generate a complete `README.md` following our standard style."
+
+and if already have a `README.md` file, you can say:
+> "Read https://raw.githubusercontent.com/TheRealZurvan/readme-template/refs/heads/master/TEMPLATE.md and refactor README.md following our standard style." 

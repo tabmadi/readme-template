@@ -1,33 +1,29 @@
-# 🤖 AI Assistant Instructions for README Generation
+# Instructions for a coding agent
 
-Use these instructions when working with Cursor, Junie, or similar AI coding assistants that have access to the codebase.
+Use these instructions with a coding agent that can read the target repo. The agent writes or rewrites the target repo's `README.md`.
 
-## 📋 Task
-Generate or update the `README.md` for this project by inspecting the codebase and following the standardized style.
+## Steps
 
-## 🛠️ Instructions for the AI
-1.  **Analyze the Codebase**:
-    -   Identify the **Project Name** from the root directory or configuration files (e.g., `package.json`, `go.mod`, `Cargo.toml`).
-    -   Determine the **Primary Language** and **Tech Stack**.
-    -   Scan for **Key Features** by looking at the source code and documentation.
-    -   Identify **Installation** and **Usage** commands from scripts (e.g., `scripts/`, `Makefile`) or task runners (e.g., `mise.toml`, `moon.yml`).
-    -   Extract **Available Scripts** and their purposes.
-    -   Note any **Configuration** (environment variables, config files).
-    -   Generate a `📁 Project Structure` ASCII tree (exclude `node_modules`, `.git`, etc.).
+1. Read the target repo: its config files, task runner, source layout, and existing docs.
+2. Choose the size of the repo:
+   - **Platform**: it runs a whole system and has a full ADR set.
+   - **Template**: it is a base to start a new project from.
+   - **Example**: it teaches one idea and is not a base to fork.
+3. Read the skeleton for that size: [template](skeletons/template/README.md), [example](skeletons/example/README.md), or [platform](skeletons/platform/README.md).
+4. Read the house style in [ADR-0001](docs/adr/0001-documentation-conventions.md).
+5. Fill every section from what the repo contains. Take each command from the task runner, and run it if you can.
+6. Delete a section that has nothing to say. Never leave a placeholder.
+7. Check the result with `rumdl check README.md`.
 
-2.  **Follow the Template**:
-    -   Strictly adhere to the structure and style defined in `TEMPLATE.md`.
-    -   Use the exact emojis for headers as specified in `TEMPLATE.md`.
-    -   Use Shields.io badges for License, Language, and key tools.
+## Rules for the text
 
-3.  **Drafting Rules**:
-    -   **Tone**: Technical, enthusiastic, and professional.
-    -   **Conciseness**: Keep descriptions clear and punchy.
-    -   **Consistency**: Ensure the output matches the branding of other projects in this ecosystem (Apache 2.0 license, Lefthook for hooks, etc.).
+- Keep the section order and the headings of the skeleton.
+- Write in Simple English: common words, one idea per sentence, at most 25 words.
+- Use only period, comma, colon, and the possessive apostrophe in prose.
+- Use no emoji and no marketing. State what the repo does.
+- Write a table compact, and do not hard-wrap a paragraph.
+- Every claim is true of the code. Do not describe a feature the repo does not have.
 
-## 🚀 Execution Command
-If you are using a tool like Junie or Cursor, you can simply say:
-> "Read https://raw.githubusercontent.com/TheRealZurvan/readme-template/refs/heads/master/TEMPLATE.md and the current codebase to generate a complete `README.md` following our standard style."
+## A prompt to start
 
-and if already have a `README.md` file, you can say:
-> "Read https://raw.githubusercontent.com/TheRealZurvan/readme-template/refs/heads/master/TEMPLATE.md and refactor README.md following our standard style." 
+> Read `AI_INSTRUCTIONS.md` in <https://github.com/tabmadi/readme-template> and follow it to write `README.md` for this repo.

@@ -12,6 +12,8 @@
 *.swo
 
 # Environment variable files
-.env
 .env*
 !.env.example
+
+# Planned work stays local
+*.local.md

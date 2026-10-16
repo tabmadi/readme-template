@@ -1,44 +1,31 @@
-Act as an expert technical writer. Generate a high-quality README.md for a GitHub project based on the following context and strictly adhering to the provided template structure.
+# Prompt for a chat assistant
 
-### Context
-- Project Name: [Insert Project Name]
-- Description: [Insert Description]
-- Technology Stack: [Insert Tech Stack, e.g., Go, TypeScript, Bun]
-- Key Features: [Insert Key Features]
-- Prerequisites: [Insert Prerequisites]
-- Installation Steps: [Insert Installation Steps]
-- Usage Examples: [Insert Usage Examples]
-- Development Scripts: [Insert Available Scripts]
-- Configuration: [Insert Environment Variables or Configs]
+Use this prompt with a chat assistant that cannot read the repo. Fill in each field in braces, then paste the whole prompt.
 
-### Constraints
-- **Style**: Modern, clean, and professional.
-- **Emoji Usage**: Use specific emojis in headers as defined in the template.
-- **Badges**: Use Shields.io badges. Include License (Apache 2.0), Main Language/Version, and key tools.
-- **Tone**: Enthusiastic but technical.
-- **Format**: Standard Markdown.
+## The prompt
 
-### Template Structure
-1. `# 🚀 [Project Name]`
-2. **Badges** (License, Language, Primary Tool)
-3. **Short Description**
-4. `## ✨ Features` (Bulleted list with bold titles and emojis)
-5. `## 🚀 Quick Start`
-    - `### Prerequisites`
-    - `### Installation`
-6. `## 🏃‍♂️ Usage` (Code blocks for commands)
-7. `## 🛠️ Development`
-    - `### Available Scripts` (Table: Script | Description)
-    - `### 🧹 Code Quality` (Tools and commands)
-    - `### 🪝 Git Hooks & Conventional Commits` (Lefthook & Conventional Commits info)
-8. `## 📁 Project Structure` (ASCII tree)
-9. `## ⚙️ Configuration` (Table: Variable | Description | Default)
-10. `## 🤝 Contributing`
-11. `## 🔒 Security` (Link to SECURITY.md)
-12. `## 📄 License` (Link to LICENSE)
-13. `## 🙏 Acknowledgments`
-14. `---`
-15. `**Happy coding! 🎉** If you find this project useful, please give it a ⭐️`
-
-### Output
-Generate the full README.md content below.
+> Write a `README.md` for a GitHub repo. Use the skeleton below for its size, and keep its section order and headings.
+>
+> Rules for the text:
+>
+> - Simple English: common words, one idea per sentence, at most 25 words.
+> - In prose, use only period, comma, colon, and the possessive apostrophe.
+> - No emoji, no marketing, and no contractions.
+> - Compact tables, and no hard-wrapped paragraphs.
+> - Delete a section that has nothing to say. Never leave a placeholder.
+> - Describe only what the facts below state.
+>
+> Facts:
+>
+> - Name: {name}
+> - Size: {platform, template, or example}
+> - What it is and who it is for: {one paragraph}
+> - Stack: {each tool and the one job it does}
+> - Setup commands: {commands}
+> - Tasks: {each task and what it does}
+> - Layout: {the top-level directories and files}
+> - Configuration: {each variable, what it controls, and its default}
+>
+> Skeleton:
+>
+> {paste the matching file from `skeletons/`}

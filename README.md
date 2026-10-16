@@ -1,114 +1,81 @@
-# 🚀 README Template
+# README Template
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Language](https://img.shields.io/badge/Language-Markdown-blue.svg)](https://www.markdownguide.org/)
-[![Tool](https://img.shields.io/badge/Tool-Mise-green.svg)](https://mise.jdx.dev/)
+The README and `AGENTS.md` skeletons for every repo in the [blueprints](https://github.com/tabmadi/blueprints) set, and the instructions to fill them with a coding agent or a chat assistant.
 
-A standardized template and set of instructions for generating high-quality project READMEs using AI assistants or
-manual curation.
+A repo has one of three sizes: platform, template, or example. Each size has its own skeleton, because one shape does not fit a whole platform and a small example.
 
-## ✨ Features
+## What it holds
 
-- ⚡ **Standardized Structure**: Follows a consistent and professional layout.
-- 🤖 **AI-Ready**: Includes `AI_INSTRUCTIONS.md` to help AI assistants generate content.
-- 🔧 **Modern Tooling**: Integrated with **Mise**, **Lefthook**, and **Cocogitto**.
-- 📁 **Organized**: Clean project structure for easy maintenance.
+| File | Use it to |
+| --- | --- |
+| [skeletons/template/](skeletons/template/README.md) | Write the README and `AGENTS.md` of a template: a base to start a new project from |
+| [skeletons/example/](skeletons/example/README.md) | Write the README and `AGENTS.md` of an example: a repo that teaches one idea |
+| [skeletons/platform/](skeletons/platform/README.md) | Write the README of a platform: a repo that runs a whole system |
+| [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) | Let a coding agent read a repo and fill the right skeleton |
+| [PROMPT.md](PROMPT.md) | Let a chat assistant with no repo access fill a skeleton from facts you give it |
 
-## 🚀 Quick Start
+The house style for all text is [ADR-0001](docs/adr/0001-documentation-conventions.md): Simple English, no emoji, compact tables, and no hard-wrapped paragraphs.
 
-### Prerequisites
+## Using it
 
-- [Mise](https://mise.jdx.dev/) - Tool version manager
-- [Git](https://git-scm.com/) - Version control
+1. Choose the size of your repo. [ADR-0000](docs/adr/0000-foundations.md) defines the three sizes.
+2. Give your coding agent this prompt from the root of your repo:
 
-### Installation
+   > Read `AI_INSTRUCTIONS.md` in <https://github.com/tabmadi/readme-template> and follow it to write `README.md` for this repo.
 
-1. **Clone the repository**:
+3. With no coding agent, fill in [PROMPT.md](PROMPT.md) and paste it into a chat assistant.
+4. Check the result with `rumdl check README.md`.
+
+## Getting started
+
+To change the skeletons, set up this repo:
+
+1. Install [mise](https://mise.jdx.dev/getting-started.html).
+2. Clone the repo and install the tools and hooks:
+
    ```bash
-   git clone https://github.com/username/readme-template.git
+   git clone git@github.com:tabmadi/readme-template.git
    cd readme-template
-   ```
-2. **Setup environment**:
-   ```bash
-   # Installs mise and all defined tools
-   ./scripts/install.sh
+   mise install
+   mise run setup
    ```
 
-## 🏃‍♂️ Usage
+## Tasks
 
-To use this template for your own project, copy `TEMPLATE.md` to your project and follow the instructions in
-`AI_INSTRUCTIONS.md` with your preferred AI assistant.
+| Task | Does |
+| --- | --- |
+| `mise run setup` | Installs the git hooks |
+| `mise run format` | Applies the Markdown fixes |
+| `mise run lint` | Runs `lint:md` and `lint:secrets` |
+| `mise run check` | Runs `lint` and `test`. Run it before you finish a change |
+| `mise run ci` | Runs exactly what CI runs. The `pre-push` hook runs it too |
 
-```bash
-# Copy the template to your project
-cp TEMPLATE.md path/to/your/project/README.md
-```
+## Layout
 
-## 🛠️ Development
-
-### Available Scripts
-
-| Script   | Description                     |
-|----------|---------------------------------|
-| `setup`  | Install Git hooks via Lefthook  |
-| `lint`   | Run linting checks              |
-| `format` | Run formatting                  |
-| `act`    | Run local CI checks using `act` |
-
-### 🧹 Code Quality
-
-We use `mise` tasks for linting and formatting:
-
-```bash
-# Run linting
-mise run lint
-
-# Run formatting
-mise run format
-```
-
-### 🪝 Git Hooks & Conventional Commits
-
-This project uses **Lefthook** for Git hooks and follows **Conventional Commits**.
-
-- **Pre-commit**: Runs linting tasks.
-- **Commit-msg**: Validates commit messages using `cog`.
-- **Pre-push**: Checks commit history consistency.
-
-## 📁 Project Structure
-
-```
+```text
 .
-├── .github/             # GitHub templates and workflows
-├── scripts/             # Helper scripts
-│   └── install.sh       # Project setup script
-├── AI_INSTRUCTIONS.md   # AI assistant guide
-├── CODE_OF_CONDUCT.md   # Community standards
-├── LICENSE              # Apache 2.0
-├── PROMPT.md            # LLM prompt context
-├── README.md            # You are here! 📍
-├── SECURITY.md          # Security policy
-├── TEMPLATE.md          # The README template itself
-└── mise.toml            # Task runner configuration
+├── skeletons/
+│   ├── template/       README.md and AGENTS.md for a template
+│   ├── example/        README.md and AGENTS.md for an example
+│   └── platform/       README.md for a platform
+├── docs/adr/           The decisions: sizes, doc conventions, toolchain
+├── AI_INSTRUCTIONS.md  Instructions for a coding agent
+├── PROMPT.md           A prompt for a chat assistant
+└── AGENTS.md           Hints for coding agents that change this repo
 ```
 
-## 🤝 Contributing
+## Decisions
 
-Contributions are welcome! Please follow these steps:
+The ADRs in [docs/adr](docs/adr/README.md) record every decision and the reason for it.
 
-1. Fork the project
-2. Create your feature branch
-3. Commit your changes (Conventional Commits)
-4. Push to the branch
-5. Open a Pull Request
+## Contributing
 
-## 🔒 Security
+Follow the [Code of Conduct](CODE_OF_CONDUCT.md). Commit messages follow [Conventional Commits](https://www.conventionalcommits.org), and the `commit-msg` hook checks them. Run `mise run check` before you open a pull request.
 
-Please see [SECURITY.md](SECURITY.md) for our security policy.
+## Security
 
-## 📄 License
+To report a vulnerability, follow [SECURITY.md](SECURITY.md).
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+## License
 
----
-**Happy coding! 🎉** If you find this project useful, please give it a ⭐️
+Apache License 2.0. See [LICENSE](LICENSE).
